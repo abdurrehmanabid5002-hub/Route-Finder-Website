@@ -826,9 +826,10 @@ body.dark .city-chip:hover{
 ==================================================== */
 
 @media(max-width:1200px){
-
     .container{
         flex-direction:column;
+        padding:20px;
+        gap:20px;
     }
 
     .left-panel,
@@ -837,43 +838,266 @@ body.dark .city-chip:hover{
     }
 
     .bottom-features{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2, 1fr);
+        gap: 15px;
     }
 
     .tech-grid{
         grid-template-columns:1fr;
+    }
+    
+    .about-container {
+        padding: 40px 20px;
+    }
+    
+    .about-row {
+        gap: 30px;
+        margin-bottom: 60px;
     }
 }
 
 @media(max-width:768px){
-
     .navbar{
-        flex-direction:column;
         height:auto;
-        padding:20px;
+        padding:15px 20px;
+        flex-wrap:wrap;
         gap:15px;
+        justify-content:space-between;
+    }
+    
+    .logo {
+        font-size:24px;
+        order: 1;
+    }
+    
+    .mode-toggle {
+        order: 2;
+        width: 58px;
+        height: 30px;
+    }
+    
+    .mode-toggle::before {
+        width: 22px;
+        height: 22px;
+        left: 3px;
+        top: 3px;
+    }
+    
+    body.dark .mode-toggle::before {
+        transform: translateX(28px);
     }
 
     .nav-links{
-        flex-wrap:wrap;
-        justify-content:center;
+        width:100%;
+        order: 3;
+        overflow-x:auto;
+        display:flex;
+        gap:8px;
+        padding-bottom:8px;
+        justify-content:flex-start;
+        -webkit-overflow-scrolling:touch;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 12px;
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .nav-links::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+    }
+
+    .nav-links button {
+        padding: 8px 14px;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .bottom-features{
         grid-template-columns:1fr;
+        gap: 12px;
     }
 
     .stats{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
+        gap: 12px;
+    }
+    
+    .stat-box {
+        padding: 15px;
+    }
+    
+    .stat-box h3 {
+        font-size: 22px;
     }
 
     .modal-content{
-        width:95%;
-        padding:25px;
+        width:92%;
+        padding:20px;
+        margin: 20px auto;
     }
 
     .tech-grid{
         grid-template-columns:1fr;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-row {
+        flex-direction: column !important;
+        gap: 25px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .about-title {
+        font-size: 26px;
+        text-align: center;
+    }
+    
+    .about-hero {
+        padding: 50px 20px;
+    }
+    
+    .about-hero h1 {
+        font-size: 34px;
+    }
+    
+    .about-hero p {
+        font-size: 16px;
+    }
+    
+    .about-container {
+        padding: 30px 15px;
+    }
+    
+    .step-card {
+        padding: 30px;
+        height: auto;
+    }
+    
+    .step-card i {
+        font-size: 50px !important;
+    }
+}
+
+@media(max-width:600px){
+    .container {
+        padding: 12px;
+        gap: 15px;
+    }
+    
+    .card {
+        padding: 18px;
+        border-radius: 20px;
+    }
+    
+    .card h2 {
+        font-size: 24px;
+    }
+    
+    .card h3 {
+        font-size: 18px;
+    }
+    
+    #map {
+        height: 380px;
+        border-radius: 15px;
+    }
+    
+    .map-area {
+        padding: 10px;
+        border-radius: 20px;
+    }
+    
+    .map-top {
+        left: 10px;
+        top: 10px;
+        gap: 6px;
+        width: calc(100% - 20px);
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .map-top::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .stat-box {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .stat-box h3 {
+        font-size: 18px;
+        margin-top: 5px;
+    }
+    
+    .stat-box p {
+        font-size: 11px;
+    }
+    
+    .stat-box i {
+        font-size: 16px;
+    }
+    
+    .btn {
+        height: 50px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+    
+    .dropdown-header {
+        height: 48px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+    
+    .options-list li {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .graph-table {
+        padding: 12px;
+        border-radius: 15px;
+    }
+    
+    .graph-table table {
+        min-width: 550px;
+    }
+    
+    .graph-table th, .graph-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+    
+    .toast {
+        width: calc(100% - 30px);
+        right: 15px;
+        bottom: 15px;
+        padding: 12px 18px;
+        font-size: 14px;
     }
 }
 
