@@ -56,7 +56,7 @@ graph TD
 
 ## 📂 Project Structure
 
-- 🗺️ **[route finder.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/route%20finder.html)**: The main application entry point (interactive map, routing search sidebar, stats cards, and table views).
+- 🗺️ **[index.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/index.html)**: The main application entry point (interactive map, routing search sidebar, stats cards, and table views).
 - ❓ **[how.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/how.html)**: Interactive guide detailing the architecture, Dijkstra logic, OSRM drawing pipeline, and user flow.
 - ℹ️ **[about.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/about.html)**: Project information page listing the mission, development journey, and the core development team.
 - 🗄️ **[cities.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/cities.js)**: Holds the JSON data for coordinates, weighted graph connections, and provincial data for all 81+ cities.
@@ -75,12 +75,12 @@ No complex database or server setups are required! The project runs entirely on 
    cd route-finder-pakistan
    ```
 2. **Open the App**:
-   Simply double-click **`route finder.html`** to open it directly in any modern browser, or run a local development server:
+   Simply double-click **`index.html`** to open it directly in any modern browser, or run a local development server:
    ```bash
    # If using python
    python -m http.server 8000
    ```
-   Then navigate to `http://localhost:8000/route finder.html` in your browser.
+   Then navigate to `http://localhost:8000/index.html` in your browser.
 
 3. **(Optional) Re-generating Graph Data**:
    If you add new cities or want to recalculate connections:
