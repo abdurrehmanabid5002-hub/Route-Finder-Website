@@ -1,3 +1,4 @@
+/* eslint-env browser */
 /**
  * SMART ROUTE FINDER — AUTHENTICATION & THEME SYNC SYSTEM
  * Shared utility loaded on all pages.
@@ -67,17 +68,42 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
+ * Generates a clean, custom inline SVG avatar with user initials.
+ * Avoids any cross-origin resource block (COEP) issues on production Vercel.
+ */
+function getAvatarSvg(name, size = 28) {
+    const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const colors = ['#5b43f3', '#0284c7', '#db2777', '#7c3aed', '#20b26c', '#f0a300', '#ff4757'];
+    const color = colors[Math.abs(hash) % colors.length];
+    const fontSize = Math.floor(size * 0.42);
+    return `
+        <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="user-avatar-svg" style="border-radius: 50%; display: block; flex-shrink: 0;">
+            <rect width="100%" height="100%" fill="${color}" />
+            <text x="50%" y="54%" fill="white" font-size="${fontSize}px" font-weight="600" font-family="'Poppins', sans-serif" text-anchor="middle" dominant-baseline="middle">${initials}</text>
+        </svg>
+    `.trim();
+}
+
+/**
  * Initializes and dynamically updates the authentication state in the navigation bar.
  */
 function initNavbarAuth() {
     const navLinks = document.querySelector('.nav-links');
     if (!navLinks) return;
 
-    // Remove any existing login button or user menu to avoid duplicates
+    const navbar = document.querySelector('.navbar');
+
+    // Remove any existing login button, user menu, or dropdown to avoid duplicates
     const existingLogin = document.getElementById('navLoginBtn');
     const existingUser = document.getElementById('userMenuContainer');
+    const existingDropdown = document.getElementById('userDropdownMenu');
     if (existingLogin) existingLogin.remove();
     if (existingUser) existingUser.remove();
+    if (existingDropdown) existingDropdown.remove();
 
     const currentUserStr = localStorage.getItem('currentUser');
     
@@ -86,18 +112,34 @@ function initNavbarAuth() {
         const user = JSON.parse(currentUserStr);
         const nameParts = user.name.split(' ');
         const displayName = nameParts[0]; // First name for compact layout
-        const avatarUrl = user.picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=5b43f3&color=fff&bold=true`;
+        let avatarHtml = '';
+        if (user.picture) {
+            const escapedName = user.name.replace(/'/g, "\\'");
+            avatarHtml = `<img src="${user.picture}" crossorigin="anonymous" class="user-avatar" alt="Avatar" onerror="this.outerHTML=getAvatarSvg('${escapedName}', 28)">`;
+        } else {
+            avatarHtml = getAvatarSvg(user.name, 28);
+        }
 
         const userMenu = document.createElement('div');
         userMenu.className = 'user-menu-container';
         userMenu.id = 'userMenuContainer';
         userMenu.innerHTML = `
             <button class="nav-btn-user" onclick="toggleUserDropdown(event)">
-                <img src="${avatarUrl}" class="user-avatar" alt="Avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-                <span class="user-name-text">${displayName}</span>
+                <div class="user-avatar-wrapper" style="display: flex; align-items: center; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1.5px solid rgba(255,255,255,0.8);">
+                    ${avatarHtml}
+                </div>
+                <span class="user-name-text" style="margin-left: 2px;">${displayName}</span>
                 <i class="fa-solid fa-chevron-down" style="font-size: 11px; margin-left: 2px;"></i>
             </button>
-            <div class="user-dropdown-menu" id="userDropdownMenu">
+        `;
+        navLinks.appendChild(userMenu);
+
+        // Create the dropdown menu as a direct child of the navbar to avoid mobile overflow-x clipping
+        if (navbar) {
+            const dropdown = document.createElement('div');
+            dropdown.className = 'user-dropdown-menu';
+            dropdown.id = 'userDropdownMenu';
+            dropdown.innerHTML = `
                 <div class="user-dropdown-info">
                     <p class="user-dropdown-name">${user.name}</p>
                     <p class="user-dropdown-email">${user.email}</p>
@@ -107,9 +149,9 @@ function initNavbarAuth() {
                     <i class="fa-solid fa-sign-out-alt"></i>
                     Sign Out
                 </button>
-            </div>
-        `;
-        navLinks.appendChild(userMenu);
+            `;
+            navbar.appendChild(dropdown);
+        }
     } else {
         // User is logged out
         const loginBtn = document.createElement('button');
@@ -137,20 +179,6 @@ function toggleUserDropdown(event) {
     event.stopPropagation();
     const dropdown = document.getElementById('userDropdownMenu');
     if (!dropdown) return;
-
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        dropdown.style.position = 'fixed';
-        dropdown.style.top = '72px';
-        dropdown.style.right = '20px';
-        dropdown.style.left = 'auto';
-    } else {
-        dropdown.style.position = '';
-        dropdown.style.top = '';
-        dropdown.style.right = '';
-        dropdown.style.left = '';
-    }
-
     dropdown.classList.toggle('active');
 }
 
@@ -237,10 +265,16 @@ function injectSharedStyles() {
             border: 1.5px solid rgba(255, 255, 255, 0.8);
         }
 
+        /* Force position and z-index on navbar to show dropdown overlaying map */
+        .navbar {
+            position: relative !important;
+            z-index: 10000 !important;
+        }
+
         .user-dropdown-menu {
             position: absolute;
-            top: calc(100% + 12px);
-            right: 0;
+            top: 80px;
+            right: 40px;
             width: 250px;
             background: white;
             border-radius: 16px;
@@ -341,6 +375,10 @@ function injectSharedStyles() {
 
         /* Mobile Adjustments for Scrollable Navbar */
         @media (max-width: 768px) {
+            .user-dropdown-menu {
+                top: 62px;
+                right: 20px;
+            }
             .nav-links {
                 align-items: center;
             }

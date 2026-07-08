@@ -19,11 +19,17 @@
         /* ====================================================
            RESET & VARIABLES
            ==================================================== */
+        html {
+            scrollbar-gutter: stable;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         :root {
@@ -43,6 +49,21 @@
             --border-dark: #2c3a54;
             --error: #ff4757;
             --success: #20b26c;
+        }
+
+        /* Prevent GPU subpixel rendering jitter (vibration on hover) */
+        .auth-card,
+        .btn-submit,
+        .btn-google,
+        .google-account-item,
+        .theme-toggle-floating,
+        .input-wrapper input {
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
         }
 
         body {
@@ -1146,29 +1167,29 @@
                 <button class="google-modal-close" onclick="closeGoogleModal()">&times;</button>
             </div>
             <ul class="google-accounts-list">
-                <li class="google-account-item" onclick="selectGoogleAccount('Abdur Rehman Abid', 'abdur@gmail.com', 'https://ui-avatars.com/api/?name=Abdur+Rehman+Abid&background=0284c7&color=fff&bold=true')">
-                    <img src="https://ui-avatars.com/api/?name=Abdur+Rehman+Abid&background=0284c7&color=fff&bold=true" class="google-account-avatar" alt="User">
+                <li class="google-account-item" onclick="selectGoogleAccount('Abdur Rehman Abid', 'abdur@gmail.com', '')">
+                    <div class="google-account-avatar" style="width:36px; height:36px; border-radius:50%; background:#0284c7; color:white; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; flex-shrink:0;">AR</div>
                     <div class="google-account-details">
                         <p class="google-account-name">Abdur Rehman Abid</p>
                         <p class="google-account-email">abdur@gmail.com</p>
                     </div>
                 </li>
-                <li class="google-account-item" onclick="selectGoogleAccount('Amna Waheed', 'amna@gmail.com', 'https://ui-avatars.com/api/?name=Amna+Waheed&background=db2777&color=fff&bold=true')">
-                    <img src="https://ui-avatars.com/api/?name=Amna+Waheed&background=db2777&color=fff&bold=true" class="google-account-avatar" alt="User">
+                <li class="google-account-item" onclick="selectGoogleAccount('Amna Waheed', 'amna@gmail.com', '')">
+                    <div class="google-account-avatar" style="width:36px; height:36px; border-radius:50%; background:#db2777; color:white; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; flex-shrink:0;">AW</div>
                     <div class="google-account-details">
                         <p class="google-account-name">Amna Waheed</p>
                         <p class="google-account-email">amna@gmail.com</p>
                     </div>
                 </li>
-                <li class="google-account-item" onclick="selectGoogleAccount('Noor Fatima', 'noor@gmail.com', 'https://ui-avatars.com/api/?name=Noor+Fatima&background=7c3aed&color=fff&bold=true')">
-                    <img src="https://ui-avatars.com/api/?name=Noor+Fatima&background=7c3aed&color=fff&bold=true" class="google-account-avatar" alt="User">
+                <li class="google-account-item" onclick="selectGoogleAccount('Noor Fatima', 'noor@gmail.com', '')">
+                    <div class="google-account-avatar" style="width:36px; height:36px; border-radius:50%; background:#7c3aed; color:white; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; flex-shrink:0;">NF</div>
                     <div class="google-account-details">
                         <p class="google-account-name">Noor Fatima</p>
                         <p class="google-account-email">noor@gmail.com</p>
                     </div>
                 </li>
                 <li class="google-account-item" onclick="selectGoogleAccount('Guest Explorer', 'guest@gmail.com', '')">
-                    <div class="google-account-avatar" style="background:#64748b; color:white; display:flex; align-items:center; justify-content:center; font-size: 16px;"><i class="fa-solid fa-user"></i></div>
+                    <div class="google-account-avatar" style="width:36px; height:36px; border-radius:50%; background:#64748b; color:white; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;"><i class="fa-solid fa-user"></i></div>
                     <div class="google-account-details">
                         <p class="google-account-name">Guest Explorer</p>
                         <p class="google-account-email">guest@gmail.com</p>
