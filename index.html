@@ -1750,7 +1750,9 @@ body.dark .team-member p {
 ==================================================== */
 
 const map = L.map('map', {
-    zoomControl: false /* Disable default top-left zoom */
+    zoomControl: false, /* Disable default top-left zoom */
+    scrollWheelZoom: false, /* Prevent accidental map zoom scrolling on desktop */
+    tap: !L.Browser.mobile /* Improve mobile tap gestures response on iOS */
 }).setView([30.3753, 69.3451], 6);
 
 /* Add Google Maps style zoom control at bottom right */
@@ -1762,7 +1764,9 @@ L.tileLayer(
 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 {
     attribution:'© OpenStreetMap',
-    crossOrigin: true
+    crossOrigin: true,
+    updateWhenIdle: true, /* Restrict tile fetching during pan transitions to save mobile data */
+    keepBuffer: 2 /* Restrict buffer to save device memory */
 }
 ).addTo(map);
 
