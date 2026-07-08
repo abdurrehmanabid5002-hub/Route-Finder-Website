@@ -3,6 +3,19 @@
  * Shared utility loaded on all pages.
  */
 
+// 0. GATEWAY AUTHENTICATION CHECK (Restricts access to website if not logged in)
+(function() {
+    const isAuthPage = window.location.pathname.toLowerCase().includes('auth.html') || 
+                       window.location.pathname.toLowerCase().endsWith('/auth');
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser && !isAuthPage) {
+        window.location.href = 'auth.html';
+    } else if (currentUser && isAuthPage) {
+        window.location.href = 'index.html';
+    }
+})();
+
 // 1. IMMEDIATE THEME SYNCHRONIZATION (Prevents white flashing)
 (function() {
     const savedTheme = localStorage.getItem('theme');
@@ -152,13 +165,9 @@ function logoutUser() {
         showToast("Signed out successfully!", "success");
     }
     
-    // Refresh page or redirect to index
+    // Refresh page or redirect to auth
     setTimeout(() => {
-        if (window.location.pathname.includes('auth.html')) {
-            window.location.reload();
-        } else {
-            window.location.href = 'index.html';
-        }
+        window.location.href = 'auth.html';
     }, 500);
 }
 
