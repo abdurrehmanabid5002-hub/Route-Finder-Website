@@ -128,8 +128,8 @@ for city1 in all_cities:
             graph[neighbor][city1] = road_dist
 
 
-# Output to cities.js
-with open('cities.js', 'w', encoding='utf-8') as f:
+# Output to cities.js in js/ directory
+with open('js/cities.js', 'w', encoding='utf-8') as f:
     f.write('/* ====================================================\n')
     f.write('   SMART ROUTE FINDER — CITY DATA MODULE (EXPANDED)\n')
     f.write('   Separated from main HTML for scalability.\n')
@@ -166,4 +166,4 @@ with open('cities.js', 'w', encoding='utf-8') as f:
         f.write('\n')
     f.write('};\n')
 
-print("cities.js generated successfully!")
+print("js/cities.js generated successfully!")

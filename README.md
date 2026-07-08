@@ -66,14 +66,30 @@ graph TD
 
 ## 📂 Project Structure
 
-- 🔐 **[auth.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/auth.html)**: The modern gateway page containing the login forms, Google sign-in integrations, loading states, and mock accounts panel.
-- ⚙️ **[auth-shared.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/auth-shared.js)**: Handles the global authentication gate redirect checks, user sessions, initials SVG generation, theme sync, dynamic profile/settings modal injection, and settings preferences hooks.
-- 🗺️ **[index.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/index.html)**: The main application entry point (interactive map, routing search sidebar, stats cards, and table views).
-- ❓ **[how.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/how.html)**: Interactive guide detailing the architecture, Dijkstra logic, OSRM drawing pipeline, and user flow.
-- ℹ️ **[about.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/about.html)**: Project information page listing the mission, development journey, and the core development team.
-- 🗄️ **[cities.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/cities.js)**: Holds the JSON data for coordinates, weighted graph connections, and provincial data for all 81+ cities.
-- ⚙️ **[generate_cities.py](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/generate_cities.py)**: Python script used to process city coordinates, calculate neighboring distances, and output the graph module.
-- 🌐 **[vercel.json](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/vercel.json)**: Hosting configuration for seamless deployment (clean URLs and COEP security headers).
+```text
+Smart Route Finder Pakistan/
+├── .git/                   # Git repository metadata
+├── js/                     # Core Javascript resources
+│   ├── auth-shared.js      # Shared authentication system & user settings engine
+│   └── cities.js           # Pakistani cities dataset & weighted connections graph
+├── README.md               # Repository documentation (this file)
+├── vercel.json             # Vercel deployment & security headers config
+├── generate_cities.py      # Python script calculating nearest neighbor distances
+├── auth.html               # Gatekeeper sign-in & sign-up panel UI
+├── index.html              # Main map interface & Dijkstra pathfinder UI
+├── about.html              # Development team & project background UI
+└── how.html                # DSA graph table & algorithm walkthrough UI
+```
+
+### File Glossary
+* 🔐 **[auth.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/auth.html)**: The modern gateway page containing the login forms, Google sign-in integrations, loading states, and mock accounts panel.
+* ⚙️ **[auth-shared.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/js/auth-shared.js)**: Handles the global authentication gate redirect checks, user sessions, initials SVG generation, theme sync, dynamic profile/settings modal injection, and settings preferences hooks.
+* 🗺️ **[index.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/index.html)**: The main application entry point (interactive map, routing search sidebar, stats cards, and table views).
+* ❓ **[how.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/how.html)**: Interactive guide detailing the architecture, Dijkstra logic, OSRM drawing pipeline, and user flow.
+* ℹ️ **[about.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/about.html)**: Project information page listing the mission, development journey, and the core development team.
+* 🗄️ **[cities.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/js/cities.js)**: Holds the JSON data for coordinates, weighted graph connections, and provincial data for all 81+ cities.
+* ⚙️ **[generate_cities.py](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/generate_cities.py)**: Python script used to process city coordinates, calculate neighboring distances, and output the graph module.
+* 🌐 **[vercel.json](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/vercel.json)**: Hosting configuration for seamless deployment (clean URLs and COEP security headers).
 
 ---
 
