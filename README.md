@@ -1,11 +1,11 @@
 # Smart Route Finder Pakistan v2.0 🇵🇰 📍
 
-An interactive, premium web-based navigation system that calculates the mathematically shortest driving route between **81+ Pakistani cities** using a custom client-side Dijkstra's algorithm, maps real road geometries using the OSRM API, and features a secure, full-featured modern authentication and settings preferences dashboard.
+An interactive, premium web-based navigation system that calculates the mathematically shortest driving route between **75 Pakistani cities** using a custom client-side Dijkstra's algorithm, maps real road geometries using the OSRM API, and features a secure, full-featured modern authentication and settings preferences dashboard.
 
 ---
 
 ## 📖 GitHub About Section (Repository Description)
-> Find the shortest driving route between 81+ Pakistani cities using Dijkstra's algorithm, with real road geometry from OSRM and interactive Leaflet maps. Features Light/Dark mode, path tables, secure Google/Email authentication gateway, and custom user settings preferences.
+> Find the shortest driving route between 75 Pakistani cities using Dijkstra's algorithm, with real road geometry from OSRM and interactive Leaflet maps. Features Light/Dark mode, path tables, secure Google/Email authentication gateway, and custom user settings preferences.
 
 ### Recommended Repository Topics (Tags)
 `dijkstra-algorithm` · `route-finder` · `leaflet-maps` · `osrm-api` · `google-oauth` · `authentication` · `user-settings` · `graph-theory` · `pakistan-navigation` · `interactive-map` · `javascript-es6` · `html5-css3`
@@ -26,7 +26,7 @@ An interactive, premium web-based navigation system that calculates the mathemat
 - **🛣️ OSRM Real Road Geometry**: Fetches exact road geometry (curves, turns, highways) from the Open Source Routing Machine (OSRM) API instead of drawing unrealistic straight lines.
 - **🌓 Premium UI & Dark Mode**: Modern, glassmorphism-inspired aesthetic with responsive layouts and a seamless Light/Dark mode toggle synced at the parser-level to prevent page white-flashing.
 - **🔔 Toast Notifications**: Customized sleek alerts replacing browser defaults for a premium experience.
-- **🌆 81+ Pakistani Cities**: Expanded coverage across Punjab, Sindh, KPK, Balochistan, AJK, GB, and ICT.
+- **🌆 75 Pakistani Cities**: Expanded coverage across Punjab, Sindh, KPK, Balochistan, AJK, GB, and ICT.
 
 ---
 
@@ -87,7 +87,7 @@ Smart Route Finder Pakistan/
 * 🗺️ **[index.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/index.html)**: The main application entry point (interactive map, routing search sidebar, stats cards, and table views).
 * ❓ **[how.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/how.html)**: Interactive guide detailing the architecture, Dijkstra logic, OSRM drawing pipeline, and user flow.
 * ℹ️ **[about.html](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/about.html)**: Project information page listing the mission, development journey, and the core development team.
-* 🗄️ **[cities.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/js/cities.js)**: Holds the JSON data for coordinates, weighted graph connections, and provincial data for all 81+ cities.
+* 🗄️ **[cities.js](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/js/cities.js)**: Holds the JSON data for coordinates, weighted graph connections, and provincial data for all 75 cities.
 * ⚙️ **[generate_cities.py](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/generate_cities.py)**: Python script used to process city coordinates, calculate neighboring distances, and output the graph module.
 * 🌐 **[vercel.json](file:///c:/Users/abdur/Downloads/Route%20Finder%20Website%202.0/vercel.json)**: Hosting configuration for seamless deployment (clean URLs and COEP security headers).
 
